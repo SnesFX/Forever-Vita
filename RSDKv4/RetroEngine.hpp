@@ -39,7 +39,7 @@ typedef unsigned int uint;
 #define RETRO_UWP   (7)
 #define RETRO_LINUX (8)
 #define RETRO_SWITCH (9)
-#define RETRO_SWITCH (10)
+#define RETRO_VITA (10)
 
 // Platform types (Game manages platform-specific code such as HUD position using this rather than the above)
 #define RETRO_STANDARD (0)
