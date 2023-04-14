@@ -22,7 +22,7 @@ jobs:
           ls ./dependencies/all
           wget https://burandby.github.io/sdl2_vita_20180523.tar.xz
           tar --no-same-owner --no-same-permissions -C $VITASDK/arm-vita-eabi -xJf sdl2_vita_20180523.tar.xz
-      - name: Build RSDKv4 Vita
+      - name: Build Sonic 1 Forever Vita
         run: |
           cd S1F.vita
           cmake .
@@ -30,6 +30,6 @@ jobs:
       - name: Upload VPK
         uses: actions/upload-artifact@v2
         with:
-          name: v4-vita
+          name: s1f-vita
           path: S1F.vita/S1F.vpk
           if-no-files-found: error
