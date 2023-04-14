@@ -15,7 +15,7 @@ endif()
 
 ## Define project parameters here
 # Name of the project
-project(RSDKv4)
+project(S2A)
 # This line adds Vita helper macros, must go after project definition in order
 # to build Vita specific artifacts (self/vpk).
 include("${VITASDK}/share/vita.cmake" REQUIRED)
