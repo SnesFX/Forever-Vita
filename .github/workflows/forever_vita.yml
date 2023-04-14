@@ -1,0 +1,35 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Build S1F Vita
+
+# Controls when the action will run.
+on:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  psvita:
+    runs-on: ubuntu-latest
+    container: gnuton/vitasdk-docker:latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install make git-core cmake python build-essential libsdl2-dev libvorbis-dev libogg-dev libtheora-dev -y
+          ls ./dependencies/all
+          wget https://burandby.github.io/sdl2_vita_20180523.tar.xz
+          tar --no-same-owner --no-same-permissions -C $VITASDK/arm-vita-eabi -xJf sdl2_vita_20180523.tar.xz
+      - name: Build RSDKv4 Vita
+        run: |
+          cd S1F.vita
+          cmake .
+          make
+      - name: Upload VPK
+        uses: actions/upload-artifact@v2
+        with:
+          name: v4-vita
+          path: S1F.vita/S1F.vpk
+          if-no-files-found: error
